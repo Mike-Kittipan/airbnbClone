@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Airbnb</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Roboto", sans-serif;
+      }
+      #aside {
+        padding: 20px 40px;
+        background-color: #000;
+        text-align: center;
+      }
+      #aside > a {
+        color: #ddd;
+        text-decoration: underline;
+      }
+      .header {
+        height: 725px;
+        padding: 0 80px;
+        background-color: whitesmoke;
+        background-image: url("image/Background\ Image.webp");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+      #menuBar {
+        display: flex;
+        height: 80px;
+        align-items: center;
+      }
+      #menuLogo {
+        display: flex;
+        justify-content: flex-start;
+      }
+      #imgLogo {
+        height: 35px;
+        width: 110px;
+      }
+      #menuLogo,
+      #menuTopic,
+      #menuLast {
+        flex: 1;
+        text-align: center;
+      }
+      #menuTopic > a {
+        padding: 10px;
+        color: #fff;
+        text-decoration: none;
+        font-size: 20px;
+        border: none;
+      }
+      #menuLast {
+        display: flex;
+        justify-content: flex-end;
+        width: 23%;
+      }
+      #menuLast > a {
+        display: flex;
+        align-items: center;
+        padding: 10px;
+        color: #fff;
+        text-decoration: none;
+        font-size: 16px;
+        border: none;
+      }
+      #iconWorld,
+      #iconUser {
+        height: 20px;
+        width: 20px;
+      }
+      #iconHamberger {
+        height: 15px;
+        width: 15px;
+      }
+      #menuLast > button {
+        display: flex;
+        align-items: center;
+        padding: 5px;
+        color: #fff;
+        border: none;
+        border-radius: 20px;
+      }
+      #menuLast > button > a {
+        display: flex;
+        align-items: center;
+        padding: 5px;
+        text-decoration: none;
+      }
+      .search_input {
+        display: flex;
+        align-items: center;
+        text-align: center;
+        height: 66px;
+        width: 850px;
+        margin: auto;
+        background-color: #fff;
+        border-radius: 110px;
+      }
+      .search_input > div:hover {
+        padding: 10px 0;
+        background-color: #e7e7e7;
+        border-radius: 110px;
+        cursor: pointer;
+      }
+      .search_input > div {
+        border-right: 1px solid #dadada;
+        width: 14rem;
+      }
+      .search_input > div * {
+        width: 70%;
+        margin: auto;
+        border: none;
+        text-align: left;
+        color: #000;
+        text-decoration: none;
+      }
+      .search_input input {
+        background-color: transparent;
+      }
+      .search_input > :nth-child(1) {
+        width: 18rem;
+      }
+      .search_input > :nth-child(4) {
+        width: 11rem;
+        border: none;
+      }
+      .search_input > :nth-child(5) {
+        width: 4.5rem;
+        border: none;
+      }
+      #btn-search {
+        display: flex;
+        justify-content: center;
+        height: 45px;
+        border-radius: 50%;
+        background-color: #fa215b;
+      }
+      #iconSearch {
+        height: 18px;
+        width: 18px;
+      }
+      #preface {
+        display: flex;
+        height: 625px;
+        flex-direction: column;
+        justify-content: center;
+      }
+      #preface > span {
+        width: 400px;
+        color: #fff;
+        font-size: 58px;
+        font-weight: bold;
+      }
+      #preface > button {
+        width: 155px;
+        height: 32px;
+        margin-top: 15px;
+        border-radius: 10px;
+        border: none;
+      }
+      .Province,
+      .accomodations,
+      .community {
+        margin: 50px 0;
+        padding: 0 80px;
+      }
+      .ItemProvince,
+      .accomodationsDetail,
+      .virtualExDetail,
+      .communityDetail,
+      .homeFooterDetail {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 10px 0;
+      }
+      .ItemProvince > a,
+      .accomodationsDetail > a {
+        width: 25%;
+        margin-top: 15px;
+        padding-right: 13px;
+        text-decoration: none;
+        list-style-type: none;
+        color: #000;
+      }
+      .ItemProvince > a > li {
+        display: flex;
+      }
+      .detailProvice {
+        place-self: center;
+        margin-left: 20px;
+      }
+      .detailProvice > b {
+        display: block;
+      }
+      .iconProvince {
+        width: 70px;
+        height: 70px;
+        border-radius: 10px;
+      }
+      .accomodationsPic {
+        width: 307px;
+        height: 307px;
+        border-radius: 10px;
+      }
+      .font32 {
+        font-size: 32px;
+      }
+      .font18 {
+        font-size: 18px;
+      }
+      .font14 {
+        font-size: 14px;
+      }
+      .font12 {
+        font-size: 12px;
+      }
+      .activities {
+        background-color: #000;
+        color: #fff;
+        padding: 50px 80px;
+      }
+      .virtualExDetail > *,
+      .communityDetail > * {
+        width: 33.33%;
+        padding-right: 13px;
+        list-style-type: none;
+        text-decoration: none;
+      }
+      .virtualExDetail > a {
+        color: #fff;
+      }
+      .virtualExPic,
+      .communityPic {
+        width: 100%;
+        border-radius: 10px;
+      }
+      .communityDetail > a {
+        color: #000;
+      }
+      .homeFooter {
+        padding: 0 80px;
+        border-top: 1px solid #dddddd;
+        background-color: #f7f7f7;
+      }
+      .homeFooterDetail > * {
+        width: 25%;
+        margin: 10px 0;
+        padding-right: 13px;
+        text-decoration: none;
+        list-style-type: none;
+        color: #000;
+      }
+      .homeFooterList > * {
+        margin-top: 10px;
+      }
+      .homeFooterList > li > *,
+      .homeFooterTitle > * {
+        text-decoration: none;
+        color: #000;
+      }
+      #iconTitle {
+        width: 15px;
+        height: 15px;
+      }
+      .lastfooter {
+        display: flex;
+        margin-top: 10px;
+        padding-bottom: 20px;
+      }
+      .lastfooter > div:nth-child(1) {
+        width: 50%;
+        text-align-last: left;
+      }
+      .lastfooter > div {
+        width: 25%;
+        text-align-last: right;
+      }
+      .homeFooterTitle {
+        padding: 0 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ส่วนบนสุดของเพจ -->
+    <aside id="aside">
+      <a href="#">
+        <span>
+          Welcome to Airbnb. Find the best places to stay in the world.
+        </span>
+      </a>
+    </aside>
+    <!-- ส่วนหัวของเพจ -->
+    <header class="header">
+      <div id="menuBar">
+        <div id="menuLogo">
+          <a href="#">
+            <img id="imgLogo" src="/image/logo.svg.png" alt="Logo" />
+          </a>
+        </div>
+        <div id="menuTopic">
+          <a href="#">
+            <span>Home</span>
+          </a>
+          <a href="#">
+            <span>Location</span>
+          </a>
+          <a href="#">
+            <span>About Us</span>
+          </a>
+        </div>
+        <div id="menuLast">
+          <a href="#">
+            <span>Become a Host</span>
+          </a>
+          <a href="#">
+            <img id="iconWorld" src="/image/world.png" alt="World" />
+          </a>
+          <button>
+            <a href="#">
+              <img
+                id="iconHamberger"
+                src="/image/hamburger-menu.png"
+                alt="Hamberger"
+              />
+            </a>
+            <a href="#">
+              <img id="iconUser" src="/image/user_552721.png" alt="User" />
+            </a>
+          </button>
+        </div>
+      </div>
+      <div class="search_input">
+        <div>
+          <a href="#">
+            <div>Location</div>
+            <input type="text" placeholder="Where are you going?" />
+          </a>
+        </div>
+        <div>
+          <a href="#">
+            <div>Check-In</div>
+            <input type="datetime" placeholder="Date" />
+          </a>
+        </div>
+        <div>
+          <a href="#">
+            <div>Check-Out</div>
+            <input type="datetime" placeholder="Date" />
+          </a>
+        </div>
+        <div>
+          <a href="#">
+            <div>Guests</div>
+            <input type="number" placeholder="Add Guests" />
+          </a>
+        </div>
+        <div>
+          <button id="btn-search">
+            <img id="iconSearch" src="/image/search.png" alt="Search" />
+          </button>
+        </div>
+      </div>
+      <div id="preface">
+        <span>Plan Your Trip,&nbsp; Nearby Places</span>
+        <button>
+          <b>Explore Locations</b>
+        </button>
+      </div>
+    </header>
+    <!-- ส่วนเนื้อหาของเพจ -->
+    <section class="Province">
+      <ul class="ItemProvince">
+        <a href="#">
+          <li>
+            <img
+              class="iconProvince"
+              src="/image/Locations-1.png"
+              alt="Locations"
+            />
+            <span class="detailProvice">
+              <b>Khao Yai</b>
+              <span>30 Minutes by Car</span>
+            </span>
+          </li>
+        </a>
+        <a href="#">
+          <li>
+            <img
+              class="iconProvince"
+              src="/image/Locations-2.png"
+              alt="Locations"
+            />
+            <span class="detailProvice">
+              <b>Chiangrai</b>
+              <span>1 Hour by Car</span>
+            </span>
+          </li>
+        </a>
+        <a href="#">
+          <li>
+            <img
+              class="iconProvince"
+              src="/image/Locations-3.png"
+              alt="Locations"
+            />
+            <span class="detailProvice">
+              <b>Samui</b>
+              <span>3.5 Hours by Car</span>
+            </span>
+          </li>
+        </a>
+        <a href="#">
+          <li>
+            <img
+              class="iconProvince"
+              src="/image/Locations-4.png"
+              alt="Locations"
+            />
+            <span class="detailProvice">
+              <b>Samet</b>
+              <span>30 Minutes by Car</span>
+            </span>
+          </li>
+        </a>
+        <a href="#">
+          <li>
+            <img
+              class="iconProvince"
+              src="/image/Location-5.png"
+              alt="Locations"
+            />
+            <span class="detailProvice">
+              <b>Pathum Thani</b>
+              <span>2 Hours by Car</span>
+            </span>
+          </li>
+        </a>
+        <a href="#">
+          <li>
+            <img
+              class="iconProvince"
+              src="/image/Location-6.png"
+              alt="Locations"
+            />
+            <span class="detailProvice">
+              <b>Pattaya</b>
+              <span>45 Minutes by Car</span>
+            </span>
+          </li>
+        </a>
+        <a href="#">
+          <li>
+            <img
+              class="iconProvince"
+              src="/image/Location-7.png"
+              alt="Locations"
+            />
+            <span class="detailProvice">
+              <b>Rayong</b>
+              <span>45 Minutes by Car</span>
+            </span>
+          </li>
+        </a>
+        <a href="#">
+          <li>
+            <img
+              class="iconProvince"
+              src="/image/Location-8.png"
+              alt="Locations"
+            />
+            <span class="detailProvice">
+              <b>Chiangmai</b>
+              <span>1 Hour by Car</span>
+            </span>
+          </li>
+        </a>
+      </ul>
+    </section>
+    <section class="accomodations">
+      <div>
+        <b class="font32">Accomodations</b>
+      </div>
+      <ul class="accomodationsDetail">
+        <a class="accomodationsItem" href="#">
+          <li>
+            <img
+              class="accomodationsPic"
+              src="/image/Accomodations - 1.png"
+              alt="Accomodations"
+            />
+            <b class="font18">Houses</b>
+          </li>
+        </a>
+        <a class="accomodationsItem" href="#">
+          <li>
+            <img
+              class="accomodationsPic"
+              src="/image/Accomodations-3.png"
+              alt="Accomodations"
+            />
+            <b class="font18">Log Cabins & Country Houses</b>
+          </li>
+        </a>
+        <a class="accomodationsItem" href="#">
+          <li>
+            <img
+              class="accomodationsPic"
+              src="/image/Accomodations-2.png"
+              alt="Accomodations"
+            />
+            <b class="font18">Unique Spaces</b>
+          </li>
+        </a>
+        <a class="accomodationsItem" href="#">
+          <li>
+            <img
+              class="accomodationsPic"
+              src="/image/Accomodations-4.png"
+              alt="Accomodations"
+            />
+            <b class="font18">Hot Tubs</b>
+          </li>
+        </a>
+      </ul>
+    </section>
+    <section class="activities">
+      <div>
+        <b class="font32">Unique Experiences and Activities</b>
+        <div class="font14">Meet with local experts.</div>
+      </div>
+      <ul class="virtualExDetail">
+        <a class="virtualExItem" href="#">
+          <li>
+            <img
+              class="virtualExPic"
+              src="/image/Virtual Experience.png"
+              alt="Virtual Experience"
+            />
+            <b class="font18">Virtual Experience</b>
+            <div class="font14">Travel the World from home</div>
+          </li>
+        </a>
+        <a class="virtualExItem" href="#">
+          <li>
+            <img
+              class="virtualExPic"
+              src="/image/Experience.png"
+              alt="Virtual Experience"
+            />
+            <b class="font18">Experience</b>
+            <div class="font14">Experience from Anywhere!</div>
+          </li>
+        </a>
+        <a class="virtualExItem" href="#">
+          <li>
+            <img
+              class="virtualExPic"
+              src="/image/Adventure.png"
+              alt="Virtual Experience"
+            />
+            <b class="font18">Adventure</b>
+            <div class="font14">
+              Multi-day trip with accomodation and meals.
+            </div>
+          </li>
+        </a>
+      </ul>
+    </section>
+    <section class="community">
+      <div>
+        <b class="font32">
+          Be a part of the millions of Airbnb Host Community.
+        </b>
+        <ul class="communityDetail">
+          <a href="#">
+            <li>
+              <img
+                class="communityPic"
+                src="/image/Become a Hostel Host .png"
+                alt="Community"
+              />
+              <b>Become a Hostel Host</b>
+            </li>
+          </a>
+          <a href="#">
+            <li>
+              <img
+                class="communityPic"
+                src="/image/Host a Virtual Experience.png"
+                alt="Community"
+              />
+              <b>Host a Virtual Experience</b>
+            </li>
+          </a>
+          <a href="#">
+            <li>
+              <img
+                class="communityPic"
+                src="/image/Host Your Experience.png"
+                alt="Community"
+              />
+              <b>Host your Experience</b>
+            </li>
+          </a>
+        </ul>
+      </div>
+    </section>
+    <footer class="homeFooter">
+      <section>
+        <div class="homeFooterDetail">
+          <ul class="homeFooterList">
+            <b class="font12">Introduce</b>
+            <li>
+              <a class="font14" href="#">Guide to Use Airbnb</a>
+            </li>
+            <li>
+              <a class="font14" href="#">Newsroom</a>
+            </li>
+            <li>
+              <a class="font14" href="#">Investor Information</a>
+            </li>
+            <li>
+              <a class="font14" href="#">Airbnb Plus</a>
+            </li>
+            <li>
+              <a class="font14" href="#">Airbnb Luxe</a>
+            </li>
+            <li>
+              <a class="font14" href="#">Hotel Tonight</a>
+            </li>
+            <li>
+              <a class="font14" href="#">Airbnb Business Program</a>
+            </li>
+            <li>
+              <a class="font14" href="#">Olympic</a>
+            </li>
+            <li>
+              <a class="font14" href="#">Jobs</a>
+            </li>
+          </ul>
+          <ul class="homeFooterList">
+            <b class="font12">Community</b>
+            <li>
+              <a class="font14" href="#">Diversity</a>
+            </li>
+            <li>
+              <a class="font14" href="#">Accessibility</a>
+            </li>
+            <li>
+              <a class="font14" href="#">Airbnb Associate</a>
+            </li>
+            <li>
+              <a class="font14" href="#">Accomodation for Aid Workers</a>
+            </li>
+            <li>
+              <a class="font14" href="#">Invite Friends</a>
+            </li>
+            <li>
+              <a class="font14" href="#">Airbnb.org</a>
+            </li>
+          </ul>
+          <ul class="homeFooterList">
+            <b class="font12">To Host</b>
+            <li>
+              <a class="font14" href="#">Accomodation Hosting</a>
+            </li>
+            <li>
+              <a class="font14" href="#">Host a Virtual Experience</a>
+            </li>
+            <li>
+              <a class="font14" href="#">Host Your Experience</a>
+            </li>
+            <li>
+              <a class="font14" href="#">Responsible Hosting</a>
+            </li>
+            <li>
+              <a class="font14" href="#">Data Center</a>
+            </li>
+            <li>
+              <a class="font14" href="#">Community Center</a>
+            </li>
+          </ul>
+          <ul class="homeFooterList">
+            <b class="font12">Airbnb Support</b>
+            <li>
+              <a class="font14" href="#">Airbnb's response to COVID-19</a>
+            </li>
+            <li>
+              <a class="font14" href="#">Help Center</a>
+            </li>
+            <li>
+              <a class="font14" href="#">Reservation Cancellation</a>
+            </li>
+            <li>
+              <a class="font14" href="#">Airbnb Neighbor Complaint Support</a>
+            </li>
+            <li>
+              <a class="font14" href="#">Trust and Safety</a>
+            </li>
+          </ul>
+        </div>
+      </section>
+      <hr />
+      <section class="font14 lastfooter">
+        <div>
+          <div>© 2021 Airbnb, Inc. All rights reserved</div>
+          <div class="homeFooterTitle">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">Site Map</a>
+            <a href="#">Refund Policy</a>
+            <a href="#">Company Details</a>
+          </div>
+        </div>
+        <div>
+          <span class="homeFooterTitle">
+            <a href="#">
+              <img id="iconTitle" src="/image/worldBlack.png" alt="World" />
+              <b>
+                <u>English (EN)</u>
+              </b>
+            </a>
+            <a href="#">
+              <b>
+                <span>฿</span>
+                <u>THB</u>
+              </b>
+            </a>
+          </span>
+        </div>
+        <div>
+          <span class="homeFooterTitle">
+            <a href="#">
+              <img id="iconTitle" src="/image/FB.png" alt="Facebook" />
+            </a>
+            <a href="#">
+              <img id="iconTitle" src="/image/twitter.png" alt="Twitter" />
+            </a>
+            <a href="#">
+              <img id="iconTitle" src="/image/instagram.png" alt="Instagram" />
+            </a>
+          </span>
+        </div>
+      </section>
+    </footer>
+  </body>
+</html>
